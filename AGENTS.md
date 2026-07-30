@@ -19,6 +19,7 @@ Do not turn undecided areas into permanent project rules without explicit user a
 - Runtime/build: Vite.
 - UI: React.
 - Language: TypeScript.
+- Styling: Tailwind CSS.
 - Internationalization: i18next with react-i18next.
 - Linting: oxlint.
 - Formatting: Prettier.
@@ -45,6 +46,10 @@ src/
       translations.json
     pt-BR/
       translations.json
+  styles/
+    globals.css
+  utils/
+    cn.ts
   App.tsx
   i18n.ts
   main.tsx
@@ -125,6 +130,18 @@ If a command fails because the project lacks configuration, dependencies, or imp
 - `scripts/generate-i18n-types.mjs` generates the i18next resource types from the canonical `en-US` locale and validates every supported locale against that key structure.
 - Run `npm run i18n:types` after changing translation JSON files; `npm run typecheck`, `npm run check`, and `npm run build` also run it.
 
+## Styling Rules
+
+- Use Tailwind CSS for styling.
+- Global CSS lives in `src/styles/globals.css`.
+- Use `src/utils/cn.ts` to compose conditional Tailwind classes.
+- Keep global CSS limited to Tailwind imports, base element defaults, and truly global browser normalization.
+- Keep CSS declarations alphabetized inside each rule unless cascade, browser compatibility, or readability requires a different order.
+- Keep Tailwind utility classes roughly alphabetized when practical, but do not sacrifice responsive/state grouping or readability.
+- Break long `className` values across lines when they exceed the configured Prettier print width.
+- Do not add theme tokens, fonts, color palettes, or design-specific values until those decisions are explicitly accepted.
+- Do not create component CSS files unless Tailwind utilities are insufficient for a concrete implementation.
+
 ## Import Rules
 
 - The `@/*` alias maps to `src/*`.
@@ -159,7 +176,6 @@ Do not mix formatting-only changes into unrelated feature or bug-fix edits unles
 
 The following areas are not decided by this file:
 
-- Styling system.
 - Design system.
 - Routing.
 - Content model.
