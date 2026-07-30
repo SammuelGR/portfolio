@@ -18,6 +18,7 @@ Do not turn undecided areas into permanent project rules without explicit user a
 
 - Runtime/build: Vite.
 - UI: React.
+- Icons: Lucide React.
 - Language: TypeScript.
 - Styling: Tailwind CSS.
 - Internationalization: i18next with react-i18next.
@@ -41,6 +42,14 @@ src/
   @types/
     i18next.d.ts
     resources.d.ts
+  components/
+    Header/
+      Header.tsx
+      LanguageSwitcher.tsx
+  constants/
+    breakpoints.ts
+  hooks/
+    useMediaQuery.ts
   locales/
     en-US/
       translations.json
@@ -106,6 +115,7 @@ If a command fails because the project lacks configuration, dependencies, or imp
 - Keep runtime values and type-only imports distinct.
 - Avoid TypeScript constructs that conflict with `erasableSyntaxOnly`.
 - Do not leave unused locals, unused parameters, dead exports, or commented-out code.
+- Declare default-exported React components with `export default function ComponentName()` instead of a separate trailing export.
 - Prefer small React components with explicit props types.
 - Keep JSX readable; extract helpers or child components when branching or mapping starts to obscure structure.
 - Avoid global mutable state unless the requirement explicitly needs it.
@@ -119,6 +129,8 @@ If a command fails because the project lacks configuration, dependencies, or imp
 - Runtime i18n setup lives in `src/i18n.ts`.
 - Translation resources live in `src/locales/{locale}/translations.json`.
 - Keep translations in JSON, not TypeScript.
+- Locale JSON files must use flat, dot-delimited keys instead of nested objects.
+- Keep the complete key searchable as a literal string in every locale file, for example `header.closeMenu`.
 - Use a single `translation` namespace until there is concrete pressure for additional namespaces.
 - Do not use `i18next-http-backend` or `i18next-browser-languagedetector` unless the project requirements change.
 - Initial language resolution must prefer a valid stored user choice, then browser language, then the fallback language.
@@ -127,18 +139,21 @@ If a command fails because the project lacks configuration, dependencies, or imp
 - `src/@types/resources.d.ts` is generated from `src/locales/en-US/translations.json`.
 - `src/@types/i18next.d.ts` owns the i18next module augmentation.
 - All locale files must expose the same translation key structure.
-- `scripts/generate-i18n-types.mjs` generates the i18next resource types from the canonical `en-US` locale and validates every supported locale against that key structure.
+- `scripts/generate-i18n-types.mjs` generates the i18next resource types from the canonical `en-US` locale, validates that every supported locale exposes the same flat, dot-delimited keys, and expands those keys into the nested type structure required by typed selectors.
 - Run `npm run i18n:types` after changing translation JSON files; `npm run typecheck`, `npm run check`, and `npm run build` also run it.
 
 ## Styling Rules
 
 - Use Tailwind CSS for styling.
+- Import every Lucide icon with an `Icon` suffix alias, for example `import { Menu as MenuIcon } from 'lucide-react'`.
 - Global CSS lives in `src/styles/globals.css`.
 - Use `src/utils/cn.ts` to compose conditional Tailwind classes.
 - Keep global CSS limited to Tailwind imports, base element defaults, and truly global browser normalization.
 - Keep CSS declarations alphabetized inside each rule unless cascade, browser compatibility, or readability requires a different order.
 - Keep Tailwind utility classes roughly alphabetized when practical, but do not sacrifice responsive/state grouping or readability.
 - Break long `className` values across lines when they exceed the configured Prettier print width.
+- Use Tailwind's `motion-safe:` variant for non-essential CSS movement such as transforms and animations; keep non-motion transitions, such as color changes, outside it.
+- Reusable viewport media-query rules live in `src/constants/breakpoints.ts`.
 - Do not add theme tokens, fonts, color palettes, or design-specific values until those decisions are explicitly accepted.
 - Do not create component CSS files unless Tailwind utilities are insufficient for a concrete implementation.
 

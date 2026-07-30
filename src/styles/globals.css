@@ -1,5 +1,13 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-accent: #e24d37;
+  --color-background: #0a0a0b;
+  --color-foreground: #e8e6e3;
+  --container-8xl: 90rem;
+  --font-ui: 'Space Grotesk', sans-serif;
+}
+
 @layer base {
   *,
   *::before,
@@ -7,8 +15,12 @@
     box-sizing: border-box;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply antialiased;
+    @apply bg-background text-foreground antialiased;
 
     color-scheme: dark;
     font-synthesis: none;
@@ -25,5 +37,11 @@
   button:disabled,
   [aria-disabled='true'] {
     cursor: not-allowed;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }

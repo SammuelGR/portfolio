@@ -1,1 +1,12 @@
-{}
+{
+  "header.closeMenu": "Close navigation menu",
+  "header.languageSwitcher.label": "Choose language",
+  "header.languageSwitcher.language.en": "EN",
+  "header.languageSwitcher.language.pt": "PT",
+  "header.navigation.about": "About",
+  "header.navigation.contact": "Contact",
+  "header.navigation.experience": "Experience",
+  "header.navigation.projects": "Projects",
+  "header.navigationLabel": "Primary navigation",
+  "header.openMenu": "Open navigation menu"
+}

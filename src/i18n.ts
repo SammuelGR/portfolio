@@ -60,6 +60,7 @@ void i18n.use(initReactI18next).init({
   fallbackLng: fallbackLanguage,
   supportedLngs: supportedLanguages,
   defaultNS: 'translation',
+  ignoreJSONStructure: true,
   interpolation: {
     escapeValue: false,
   },

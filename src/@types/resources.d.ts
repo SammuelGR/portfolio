@@ -2,5 +2,24 @@
 // Do not edit it manually.
 
 export type Resources = {
-  translation: {};
+  translation: {
+    header: {
+      closeMenu: 'Close navigation menu';
+      languageSwitcher: {
+        label: 'Choose language';
+        language: {
+          en: 'EN';
+          pt: 'PT';
+        };
+      };
+      navigation: {
+        about: 'About';
+        contact: 'Contact';
+        experience: 'Experience';
+        projects: 'Projects';
+      };
+      navigationLabel: 'Primary navigation';
+      openMenu: 'Open navigation menu';
+    };
+  };
 };
