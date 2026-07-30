@@ -19,6 +19,7 @@ Do not turn undecided areas into permanent project rules without explicit user a
 - Runtime/build: Vite.
 - UI: React.
 - Language: TypeScript.
+- Internationalization: i18next with react-i18next.
 - Linting: oxlint.
 - Formatting: Prettier.
 - Package manager: npm, with `package-lock.json` committed.
@@ -36,8 +37,19 @@ Authoritative versions and scripts live in `package.json`. Read it before assumi
 
 ```txt
 src/
+  @types/
+    i18next.d.ts
+    resources.d.ts
+  locales/
+    en-US/
+      translations.json
+    pt-BR/
+      translations.json
   App.tsx
+  i18n.ts
   main.tsx
+scripts/
+  generate-i18n-types.mjs
 public/
   favicon.png
 index.html
@@ -93,6 +105,25 @@ If a command fails because the project lacks configuration, dependencies, or imp
 - Keep JSX readable; extract helpers or child components when branching or mapping starts to obscure structure.
 - Avoid global mutable state unless the requirement explicitly needs it.
 - Do not add routing, state management, animation, styling, data-fetching, or content libraries before the project has an accepted decision for that category.
+
+## Internationalization Rules
+
+- Supported locales are `en-US` and `pt-BR`.
+- Locale identifiers must use BCP 47 casing.
+- Fallback language is `en-US`.
+- Runtime i18n setup lives in `src/i18n.ts`.
+- Translation resources live in `src/locales/{locale}/translations.json`.
+- Keep translations in JSON, not TypeScript.
+- Use a single `translation` namespace until there is concrete pressure for additional namespaces.
+- Do not use `i18next-http-backend` or `i18next-browser-languagedetector` unless the project requirements change.
+- Initial language resolution must prefer a valid stored user choice, then browser language, then the fallback language.
+- Browser language detection is manual: any browser language starting with `pt` resolves to `pt-BR`; everything else resolves to `en-US`.
+- User language choice is persisted in `localStorage`.
+- `src/@types/resources.d.ts` is generated from `src/locales/en-US/translations.json`.
+- `src/@types/i18next.d.ts` owns the i18next module augmentation.
+- All locale files must expose the same translation key structure.
+- `scripts/generate-i18n-types.mjs` generates the i18next resource types from the canonical `en-US` locale and validates every supported locale against that key structure.
+- Run `npm run i18n:types` after changing translation JSON files; `npm run typecheck`, `npm run check`, and `npm run build` also run it.
 
 ## Import Rules
 
