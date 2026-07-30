@@ -18,6 +18,7 @@ Do not turn undecided areas into permanent project rules without explicit user a
 
 - Runtime/build: Vite.
 - UI: React.
+- Animation: Motion for React.
 - Icons: Lucide React.
 - Language: TypeScript.
 - Styling: Tailwind CSS.
@@ -195,7 +196,6 @@ The following areas are not decided by this file:
 - Routing.
 - Content model.
 - Project sections.
-- Animation approach.
 - Image/media strategy.
 - Testing framework.
 - Analytics.

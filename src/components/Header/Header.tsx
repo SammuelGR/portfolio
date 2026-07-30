@@ -1,4 +1,6 @@
 import { Menu as MenuIcon, X as XIcon } from 'lucide-react';
+import { AnimatePresence } from 'motion/react';
+import * as m from 'motion/react-m';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -69,15 +71,24 @@ export default function Header() {
         {isMd ? (
           <nav aria-label={t(($) => $.header.navigationLabel)} className="col-start-2">
             <ul className="flex gap-12 items-center">
-              {navigationItems.map((item) => (
-                <li key={item.href}>
+              {navigationItems.map((item, index) => (
+                <m.li
+                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: -6 }}
+                  key={item.href}
+                  transition={{
+                    delay: index * 0.07,
+                    duration: 0.28,
+                    ease: 'easeOut',
+                  }}
+                >
                   <a
                     className={cn(interactiveTextClassName, 'font-medium font-ui text-foreground/70 text-xs uppercase')}
                     href={item.href}
                   >
                     {item.label}
                   </a>
-                </li>
+                </m.li>
               ))}
             </ul>
           </nav>
@@ -93,11 +104,32 @@ export default function Header() {
             onClick={handleMenuToggle}
             type="button"
           >
-            {isMenuOpen ? (
-              <XIcon aria-hidden="true" className="size-6" strokeWidth={1.5} />
-            ) : (
-              <MenuIcon aria-hidden="true" className="size-6" strokeWidth={1.5} />
-            )}
+            <span aria-hidden="true" className="block relative size-6">
+              <AnimatePresence initial={false}>
+                <m.span
+                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                  className="absolute inset-0"
+                  exit={{
+                    opacity: 0,
+                    rotate: isMenuOpen ? 45 : -45,
+                    scale: 0.8,
+                  }}
+                  initial={{
+                    opacity: 0,
+                    rotate: isMenuOpen ? -45 : 45,
+                    scale: 0.8,
+                  }}
+                  key={isMenuOpen ? 'close-menu' : 'open-menu'}
+                  transition={{ duration: 0.12, ease: 'easeOut' }}
+                >
+                  {isMenuOpen ? (
+                    <XIcon className="size-6" strokeWidth={1.5} />
+                  ) : (
+                    <MenuIcon className="size-6" strokeWidth={1.5} />
+                  )}
+                </m.span>
+              </AnimatePresence>
+            </span>
           </button>
         )}
 
@@ -107,30 +139,46 @@ export default function Header() {
         />
       </div>
 
-      {!isMd && isMenuOpen && (
-        <nav
-          aria-label={t(($) => $.header.navigationLabel)}
-          className="bg-background fixed inset-0 px-6 pt-24 z-40"
-          id="mobile-navigation"
-        >
-          <ul className="w-full">
-            {navigationItems.map((item) => (
-              <li className="border-b border-foreground/10 first:border-t" key={item.href}>
-                <a
-                  className={cn(
-                    interactiveTextClassName,
-                    'block font-medium font-ui motion-safe:hover:translate-x-1 motion-safe:transition-[color,translate] py-6 text-foreground text-xl uppercase',
-                  )}
-                  href={item.href}
-                  onClick={handleMenuClose}
+      <AnimatePresence initial={false}>
+        {!isMd && isMenuOpen && (
+          <m.nav
+            animate={{ opacity: 1, y: 0 }}
+            aria-label={t(($) => $.header.navigationLabel)}
+            className="bg-background fixed inset-0 px-6 pt-24 z-40"
+            exit={{ opacity: 0, y: -4 }}
+            id="mobile-navigation"
+            initial={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18, ease: 'easeOut' }}
+          >
+            <ul className="w-full">
+              {navigationItems.map((item, index) => (
+                <m.li
+                  animate={{ opacity: 1, y: 0 }}
+                  className="border-b border-foreground/10 first:border-t"
+                  initial={{ opacity: 0, y: -6 }}
+                  key={item.href}
+                  transition={{
+                    delay: index * 0.03,
+                    duration: 0.14,
+                    ease: 'easeOut',
+                  }}
                 >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+                  <a
+                    className={cn(
+                      interactiveTextClassName,
+                      'block font-medium font-ui motion-safe:hover:translate-x-1 motion-safe:transition-[color,translate] py-6 text-foreground text-xl uppercase',
+                    )}
+                    href={item.href}
+                    onClick={handleMenuClose}
+                  >
+                    {item.label}
+                  </a>
+                </m.li>
+              ))}
+            </ul>
+          </m.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
