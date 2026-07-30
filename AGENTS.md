@@ -45,8 +45,13 @@ src/
     resources.d.ts
   components/
     Header/
+      constants.ts
+      DesktopNavigation.tsx
       Header.tsx
       LanguageSwitcher.tsx
+      MobileMenuButton.tsx
+      MobileNavigation.tsx
+      types.ts
   constants/
     breakpoints.ts
   hooks/
