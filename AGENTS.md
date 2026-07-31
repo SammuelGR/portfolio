@@ -43,6 +43,13 @@ src/
   @types/
     i18next.d.ts
     resources.d.ts
+  app/
+    Hero/
+      assets/
+        hero-background.jpg
+        hero-background.webp
+      Hero.tsx
+    index.tsx
   components/
     Header/
       constants.ts
@@ -65,7 +72,6 @@ src/
     globals.css
   utils/
     cn.ts
-  App.tsx
   i18n.ts
   main.tsx
 scripts/
@@ -179,6 +185,8 @@ Follow `.prettierrc`:
 - `trailingComma`: `all`
 - `arrowParens`: `always`
 - `endOfLine`: `lf`
+
+In multiline JSX, separate adjacent sibling elements and expression blocks at the same indentation level with a blank line.
 
 Do not mix formatting-only changes into unrelated feature or bug-fix edits unless formatting is required by the touched code.
 
