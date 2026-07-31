@@ -44,13 +44,6 @@ src/
     i18next.d.ts
     resources.d.ts
   app/
-    Hero/
-      assets/
-        hero-background.jpg
-        hero-background.webp
-      Hero.tsx
-    index.tsx
-  components/
     Header/
       constants.ts
       DesktopNavigation.tsx
@@ -59,6 +52,12 @@ src/
       MobileMenuButton.tsx
       MobileNavigation.tsx
       types.ts
+    Hero/
+      assets/
+        hero-background.jpg
+        hero-background.webp
+      Hero.tsx
+    index.tsx
   constants/
     breakpoints.ts
   hooks/
