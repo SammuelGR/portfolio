@@ -10,7 +10,7 @@ Do not duplicate project rules across multiple agent-instruction files. If anoth
 
 This repository is a personal portfolio application built with React, TypeScript, and Vite.
 
-The project is currently in its initial setup phase. Treat undocumented product, design, content, architecture, routing, styling, testing, analytics, and external data choices as undecided.
+The project is currently in its initial setup phase. Treat undocumented product, design, content, architecture, routing, styling, analytics, and external data choices as undecided.
 
 Do not turn undecided areas into permanent project rules without explicit user approval or a concrete implementation already present in the repository.
 
@@ -22,6 +22,7 @@ Do not turn undecided areas into permanent project rules without explicit user a
 - Icons: Lucide React.
 - Language: TypeScript.
 - Styling: Tailwind CSS.
+- Testing: Vitest with React Testing Library and jsdom.
 - Internationalization: i18next with react-i18next.
 - Linting: oxlint.
 - Formatting: Prettier.
@@ -45,6 +46,9 @@ src/
     resources.d.ts
   app/
     Header/
+      __tests__/
+        Header.test.tsx
+        LanguageSwitcher.test.tsx
       constants.ts
       DesktopNavigation.tsx
       Header.tsx
@@ -69,6 +73,8 @@ src/
       translations.json
   styles/
     globals.css
+  test/
+    setup.ts
   utils/
     cn.ts
   i18n.ts
@@ -89,8 +95,6 @@ AGENTS.md
 CLAUDE.md
 ```
 
-The repository does not yet have a stable application structure beyond the Vite starter layout.
-
 Do not create broad folder hierarchies speculatively. Add directories only when there are actual files and a clear boundary to preserve.
 
 ## Build And Validation Commands
@@ -106,6 +110,8 @@ npm run lint
 npm run lint:fix
 npm run format
 npm run format:check
+npm run test
+npm run test:watch
 npm run typecheck
 npm run preview
 ```
@@ -209,7 +215,6 @@ The following areas are not decided by this file:
 - Content model.
 - Project sections.
 - Image/media strategy.
-- Testing framework.
 - Analytics.
 - CMS or external data source.
 

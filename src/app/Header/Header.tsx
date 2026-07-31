@@ -5,7 +5,6 @@ import { rules } from '@/constants/breakpoints';
 import useMediaQuery from '@/hooks/useMediaQuery';
 import { cn } from '@/utils/cn';
 
-import { interactiveTextClassName } from './constants';
 import DesktopNavigation from './DesktopNavigation';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenuButton from './MobileMenuButton';
@@ -72,10 +71,7 @@ export default function Header() {
           <MobileMenuButton isOpen={isMenuOpen} onToggle={handleMenuToggle} />
         )}
 
-        <LanguageSwitcher
-          className={isMd ? 'col-start-3 justify-self-end' : undefined}
-          controlClassName={interactiveTextClassName}
-        />
+        <LanguageSwitcher className={isMd ? 'col-start-3 justify-self-end' : undefined} />
       </div>
 
       {!isMd && <MobileNavigation isOpen={isMenuOpen} items={navigationItems} onClose={handleMenuClose} />}

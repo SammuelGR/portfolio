@@ -3,14 +3,15 @@ import { useTranslation } from 'react-i18next';
 import { supportedLanguages, type SupportedLanguage } from '@/i18n';
 import { cn } from '@/utils/cn';
 
+import { interactiveTextClassName } from './constants';
+
 const [englishLanguage, portugueseLanguage] = supportedLanguages;
 
 type LanguageSwitcherProps = {
   className?: string;
-  controlClassName: string;
 };
 
-export default function LanguageSwitcher({ className, controlClassName }: LanguageSwitcherProps) {
+export default function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const { i18n, t } = useTranslation();
   const isEnglish = i18n.resolvedLanguage === englishLanguage;
   const isPortuguese = i18n.resolvedLanguage === portugueseLanguage;
@@ -26,7 +27,7 @@ export default function LanguageSwitcher({ className, controlClassName }: Langua
       <div className="flex font-medium font-ui gap-3 items-center text-xs">
         <button
           aria-pressed={isEnglish}
-          className={cn(controlClassName, isEnglish ? 'text-accent' : 'text-foreground/50')}
+          className={cn(interactiveTextClassName, isEnglish ? 'text-accent' : 'text-foreground/50')}
           onClick={() => handleLanguageChange(englishLanguage)}
           type="button"
         >
@@ -39,7 +40,7 @@ export default function LanguageSwitcher({ className, controlClassName }: Langua
 
         <button
           aria-pressed={isPortuguese}
-          className={cn(controlClassName, isPortuguese ? 'text-accent' : 'text-foreground/50')}
+          className={cn(interactiveTextClassName, isPortuguese ? 'text-accent' : 'text-foreground/50')}
           onClick={() => handleLanguageChange(portugueseLanguage)}
           type="button"
         >
