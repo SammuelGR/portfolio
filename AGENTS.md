@@ -57,13 +57,23 @@ src/
       MobileNavigation.tsx
       types.ts
     Hero/
+      Projects/
+        Projects.tsx
+      __tests__/
+        Hero.test.tsx
       assets/
         hero-background.jpg
         hero-background.webp
       Hero.tsx
     index.tsx
+  assets/
+    projects/
+      manavaultbuilder-thumbnail.webp
+      nf-et-matcher-thumbnail.webp
   constants/
     breakpoints.ts
+  data/
+    projects.ts
   hooks/
     useMediaQuery.ts
   locales/

@@ -14,13 +14,19 @@
   --leading-display: 0.82;
   --spacing-116: 29rem;
   --text-caption: 0.625rem;
-  --text-display-lg: 9rem;
+  --text-display-xl: 9rem;
   --tracking-action: 0.2em;
   --tracking-action-wide: 0.24em;
   --tracking-label: 0.22em;
   --tracking-label-wide: 0.28em;
 
   --animate-scroll-cue: scroll-cue 2.2s ease-in-out infinite;
+
+  @keyframes animated-border-card {
+    to {
+      --animated-border-card-angle: 360deg;
+    }
+  }
 
   @keyframes scroll-cue {
     0%,
@@ -70,6 +76,59 @@
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+  }
+}
+
+@property --animated-border-card-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@layer components {
+  .animated-border-card {
+    --animated-border-card-color-soft: rgb(from var(--color-accent) r g b / 0.1);
+    --animated-border-card-color-strong: rgb(from var(--color-accent) r g b / 0.72);
+    --animated-border-card-duration: 6s;
+    --animated-border-card-opacity: 0.58;
+    --animated-border-card-opacity-hover: 0.82;
+    --animated-border-card-width: 1px;
+
+    position: relative;
+  }
+
+  .animated-border-card::before {
+    background: conic-gradient(
+      from var(--animated-border-card-angle),
+      transparent 0deg,
+      transparent 238deg,
+      var(--animated-border-card-color-soft) 280deg,
+      var(--animated-border-card-color-strong) 318deg,
+      var(--animated-border-card-color-soft) 356deg,
+      transparent 360deg
+    );
+    border-radius: inherit;
+    content: '';
+    inset: 0;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: var(--animated-border-card-opacity);
+    padding: var(--animated-border-card-width);
+    pointer-events: none;
+    position: absolute;
+    transition: opacity 200ms ease-out;
+  }
+
+  .animated-border-card:hover::before {
+    opacity: var(--animated-border-card-opacity-hover);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .animated-border-card::before {
+      animation: animated-border-card var(--animated-border-card-duration) linear infinite;
     }
   }
 }

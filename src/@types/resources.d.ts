@@ -25,8 +25,22 @@ export type Resources = {
       cta: 'View my work';
       description: 'React, TypeScript and frontend experience in the crypto industry.';
       headline: 'Sammuel Reis';
+      projects: {
+        github: 'GitHub';
+        liveProject: 'Live project';
+      };
       role: 'Frontend Developer';
       scrollIndicator: 'Scroll to continue';
+    };
+    projects: {
+      manaVaultBuilder: {
+        imageAlt: 'ManaVaultBuilder project thumbnail';
+        title: 'ManaVaultBuilder';
+      };
+      nfEtMatcher: {
+        imageAlt: 'NF_ET Matcher project thumbnail';
+        title: 'NF_ET Matcher';
+      };
     };
   };
 };

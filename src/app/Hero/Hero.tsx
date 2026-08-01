@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import heroBackgroundFallback from './assets/hero-background.jpg';
 import heroBackground from './assets/hero-background.webp';
+import Projects from './Projects/Projects';
 
 const mobileBackgroundImageSizeClassName = 'bg-size-[auto_--spacing(116)]';
 
@@ -52,7 +53,7 @@ export default function Hero() {
       <div className={mobileBackgroundFadeClassName} />
       <div className="absolute inset-x-0 bottom-0 h-60 bg-linear-to-t from-background via-background/80 to-transparent" />
 
-      <div className="relative min-h-svh px-8 pt-24 pb-36 sm:px-9 sm:pt-28 md:px-22 md:pt-48 lg:px-24">
+      <div className="relative min-h-svh px-8 pt-24 pb-28 sm:px-9 sm:pt-28 md:px-22 md:pt-28 md:pb-24 lg:px-24 lg:pt-24 lg:pb-20 xl:pt-28">
         <m.div
           animate="animate"
           className="max-w-3xl"
@@ -63,7 +64,7 @@ export default function Hero() {
           }}
         >
           <m.h1
-            className="inline-block origin-left scale-x-[0.86] font-display text-6xl leading-display font-normal text-title uppercase sm:text-7xl md:whitespace-nowrap md:text-8xl lg:text-display-lg"
+            className="inline-block origin-left scale-x-[0.86] font-display text-6xl leading-display font-normal text-title uppercase sm:text-7xl md:whitespace-nowrap md:text-8xl lg:text-7xl xl:text-display-xl"
             transition={{ ...heroTextItemTransition, duration: 0.84 }}
             variants={heroTitleVariants}
           >
@@ -71,7 +72,7 @@ export default function Hero() {
           </m.h1>
 
           <m.p
-            className="font-body text-sm tracking-label text-accent uppercase md:text-xl md:tracking-label-wide"
+            className="font-body text-sm tracking-label text-accent uppercase md:text-lg md:tracking-label-wide xl:text-xl"
             transition={heroTextItemTransition}
             variants={heroTextItemVariants}
           >
@@ -94,7 +95,7 @@ export default function Hero() {
           </m.p>
 
           <m.a
-            className="mt-5 inline-flex items-center gap-4 font-body text-xs tracking-action text-accent uppercase duration-200 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:mt-7 md:gap-5 md:tracking-action-wide"
+            className="mt-5 inline-flex items-center gap-4 font-body text-xs tracking-action text-accent uppercase duration-200 hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:mt-8 md:gap-5 md:tracking-action-wide"
             href="#projects"
             transition={heroTextItemTransition}
             variants={heroTextItemVariants}
@@ -102,6 +103,8 @@ export default function Hero() {
             <span>{t(($) => $.hero.cta)}</span>
             <ArrowRightIcon aria-hidden="true" className="size-6 md:size-7" strokeWidth={1.4} />
           </m.a>
+
+          <Projects />
         </m.div>
 
         <div className="absolute inset-x-6 bottom-5 md:bottom-9">

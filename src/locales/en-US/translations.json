@@ -12,6 +12,12 @@
   "hero.cta": "View my work",
   "hero.description": "React, TypeScript and frontend experience in the crypto industry.",
   "hero.headline": "Sammuel Reis",
+  "hero.projects.github": "GitHub",
+  "hero.projects.liveProject": "Live project",
   "hero.role": "Frontend Developer",
-  "hero.scrollIndicator": "Scroll to continue"
+  "hero.scrollIndicator": "Scroll to continue",
+  "projects.manaVaultBuilder.imageAlt": "ManaVaultBuilder project thumbnail",
+  "projects.manaVaultBuilder.title": "ManaVaultBuilder",
+  "projects.nfEtMatcher.imageAlt": "NF_ET Matcher project thumbnail",
+  "projects.nfEtMatcher.title": "NF_ET Matcher"
 }
