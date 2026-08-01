@@ -1,7 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import Hero from '../Hero';
+
+vi.mock('../Projects/Projects', () => ({
+  default: () => <div data-testid="projects" />,
+}));
 
 describe('Hero', () => {
   it('renders hero correctly', () => {
@@ -11,6 +15,7 @@ describe('Hero', () => {
     expect(screen.getByText('hero.role')).toBeInTheDocument();
     expect(screen.getByText('hero.description')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'hero.cta' })).toBeInTheDocument();
+    expect(screen.getByTestId('projects')).toBeInTheDocument();
     expect(screen.getByText('hero.scrollIndicator')).toBeInTheDocument();
   });
 

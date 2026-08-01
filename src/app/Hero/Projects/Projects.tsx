@@ -63,6 +63,7 @@ export default function Projects() {
 
             <div className="mt-3 flex items-center justify-between gap-3 border-t border-foreground/5 pt-3 font-body text-caption tracking-widest text-muted-strong uppercase">
               <a
+                aria-label={`${t(project.titleKey)} ${t(($) => $.hero.projects.liveProject)}`}
                 className="flex items-center gap-2 text-foreground/80 transition-colors duration-200 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 href={project.liveProjectUrl}
                 rel="noreferrer"
