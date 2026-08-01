@@ -4,8 +4,36 @@
   --color-accent: #e24d37;
   --color-background: #0a0a0b;
   --color-foreground: #e8e6e3;
+  --color-muted: #8b8276;
+  --color-muted-strong: #aea496;
+  --color-title: #bdb4a6;
   --container-8xl: 90rem;
+  --font-body: 'IBM Plex Mono', monospace;
+  --font-display: 'Teko', sans-serif;
   --font-ui: 'Space Grotesk', sans-serif;
+  --leading-display: 0.82;
+  --spacing-116: 29rem;
+  --text-caption: 0.625rem;
+  --text-display-lg: 9rem;
+  --tracking-action: 0.2em;
+  --tracking-action-wide: 0.24em;
+  --tracking-label: 0.22em;
+  --tracking-label-wide: 0.28em;
+
+  --animate-scroll-cue: scroll-cue 2.2s ease-in-out infinite;
+
+  @keyframes scroll-cue {
+    0%,
+    100% {
+      opacity: 0.48;
+      transform: translateY(0);
+    }
+
+    50% {
+      opacity: 0.8;
+      transform: translateY(0.25rem);
+    }
+  }
 }
 
 @layer base {

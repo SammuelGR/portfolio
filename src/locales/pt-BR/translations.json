@@ -8,5 +8,10 @@
   "header.navigation.experience": "Experiência",
   "header.navigation.projects": "Projetos",
   "header.navigationLabel": "Navegação principal",
-  "header.openMenu": "Abrir menu de navegação"
+  "header.openMenu": "Abrir menu de navegação",
+  "hero.cta": "Ver meus projetos",
+  "hero.description": "React, TypeScript e experiência frontend na indústria cripto.",
+  "hero.headline": "Sammuel Reis",
+  "hero.role": "Desenvolvedor Frontend",
+  "hero.scrollIndicator": "Role para continuar"
 }

@@ -21,5 +21,12 @@ export type Resources = {
       navigationLabel: 'Primary navigation';
       openMenu: 'Open navigation menu';
     };
+    hero: {
+      cta: 'View my work';
+      description: 'React, TypeScript and frontend experience in the crypto industry.';
+      headline: 'Sammuel Reis';
+      role: 'Frontend Developer';
+      scrollIndicator: 'Scroll to continue';
+    };
   };
 };
