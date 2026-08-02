@@ -58,11 +58,16 @@ export default function Header() {
   }
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header
+      className={cn(
+        'fixed inset-x-0 top-0 z-50',
+        !isMenuOpen && 'bg-background/70 shadow-lg shadow-background/40 backdrop-blur-md',
+      )}
+    >
       <div
         className={cn(
           'items-center max-w-8xl mx-auto',
-          isMd ? 'grid grid-cols-[1fr_auto_1fr] px-10 py-8 lg:px-16' : 'flex justify-between px-6 py-7 relative z-50',
+          isMd ? 'grid grid-cols-[1fr_auto_1fr] px-8 py-3 lg:px-12' : 'flex justify-between px-5 py-4 relative z-50',
         )}
       >
         {isMd ? (
