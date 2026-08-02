@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { rules } from '@/constants/breakpoints';
@@ -13,14 +13,61 @@ import MobileNavigation from './MobileNavigation';
 export default function Header() {
   const { t } = useTranslation();
   const isMd = useMediaQuery(rules.md);
+  const [activeHref, setActiveHref] = useState<string>();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navigationItems = [
-    { href: '#experience', label: t(($) => $.header.navigation.experience) },
-    { href: '#projects', label: t(($) => $.header.navigation.projects) },
-    { href: '#about', label: t(($) => $.header.navigation.about) },
-    { href: '#contact', label: t(($) => $.header.navigation.contact) },
-  ];
+  const navigationItems = useMemo(
+    () => [
+      { href: '#experience', label: t(($) => $.header.navigation.experience) },
+      { href: '#projects', label: t(($) => $.header.navigation.projects) },
+      { href: '#about', label: t(($) => $.header.navigation.about) },
+      { href: '#contact', label: t(($) => $.header.navigation.contact) },
+    ],
+    [t],
+  );
+
+  useEffect(() => {
+    if (!isMd || typeof IntersectionObserver === 'undefined') {
+      setActiveHref(undefined);
+      return;
+    }
+
+    const sectionHrefByElement = new Map<Element, string>();
+
+    navigationItems.forEach((item) => {
+      const section = document.querySelector(item.href);
+
+      if (section) {
+        sectionHrefByElement.set(section, item.href);
+      }
+    });
+
+    if (sectionHrefByElement.size === 0) {
+      setActiveHref(undefined);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((firstEntry, secondEntry) => secondEntry.intersectionRatio - firstEntry.intersectionRatio)[0];
+
+        setActiveHref(visibleEntry ? sectionHrefByElement.get(visibleEntry.target) : undefined);
+      },
+      {
+        rootMargin: '-20% 0px -45% 0px',
+      },
+    );
+
+    sectionHrefByElement.forEach((_, section) => {
+      observer.observe(section);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [isMd, navigationItems]);
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -71,7 +118,7 @@ export default function Header() {
         )}
       >
         {isMd ? (
-          <DesktopNavigation items={navigationItems} />
+          <DesktopNavigation activeHref={activeHref} items={navigationItems} />
         ) : (
           <MobileMenuButton isOpen={isMenuOpen} onToggle={handleMenuToggle} />
         )}
