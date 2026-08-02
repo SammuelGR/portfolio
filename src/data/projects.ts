@@ -1,17 +1,15 @@
-import type { Resources } from '@/@types/resources';
+import type { TranslationSelector } from '@/types/translation';
 
 import manaVaultBuilderThumbnail from '@/assets/projects/manavaultbuilder-thumbnail.webp';
 import nfEtMatcherThumbnail from '@/assets/projects/nf-et-matcher-thumbnail.webp';
 
-type ProjectTranslationKey = (resources: Resources['translation']) => string;
-
 export type Project = {
   githubUrl: string;
-  imageAltKey: ProjectTranslationKey;
+  imageAltKey: TranslationSelector;
   imageSrc: string;
   isHighlighted: boolean;
   liveProjectUrl: string;
-  titleKey: ProjectTranslationKey;
+  titleKey: TranslationSelector;
 };
 
 export const projects = [

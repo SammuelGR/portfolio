@@ -3,6 +3,38 @@
 
 export type Resources = {
   translation: {
+    experience: {
+      mainAreas: 'Main areas';
+      ripio: {
+        area: {
+          backoffice: 'Backoffice and internal administrative tools';
+          designSystem: 'Design systems and reusable components with Storybook';
+          internationalization: 'Internationalization (i18n)';
+          performance: 'Performance and legacy browser compatibility';
+          testing: 'Unit, integration and end-to-end testing';
+          trading: 'Trading interfaces, TradingView charts and WebSocket-powered order book';
+        };
+        companyType: 'Crypto exchange';
+        description: 'Built and maintained frontend applications for a crypto exchange, spanning trading, backoffice, shared UI foundations and SEO-oriented landing pages. Worked with real-time market data, automated testing, internationalization, performance and legacy browser compatibility.';
+        period: 'Dec 2021 - Jan 2025';
+        role: 'Frontend Developer';
+      };
+      technologies: 'Technologies';
+      title: 'Experience';
+      weAccelerate: {
+        area: {
+          backend: 'REST APIs and backend services with Node.js, Express and MongoDB';
+          integrations: 'Firebase authentication, notifications and geolocation';
+          mobile: 'Cross-platform mobile applications with React Native';
+          realtime: 'Real-time chat features and Redis caching';
+          web: 'React and TypeScript web interfaces';
+        };
+        companyType: 'Software development company';
+        description: 'Worked on multiple client products across backend, web and mobile, contributing to application features, APIs and service integrations.';
+        period: 'Jul 2020 - Feb 2022';
+        role: 'Fullstack JavaScript Developer';
+      };
+    };
     header: {
       closeMenu: 'Close navigation menu';
       languageSwitcher: {

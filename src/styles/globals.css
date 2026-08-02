@@ -2,6 +2,7 @@
 
 @theme {
   --color-accent: #e24d37;
+  --color-accent-glow: rgb(from var(--color-accent) r g b / 0.08);
   --color-background: #0a0a0b;
   --color-foreground: #e8e6e3;
   --color-muted: #8b8276;
@@ -12,13 +13,16 @@
   --font-display: 'Teko', sans-serif;
   --font-ui: 'Space Grotesk', sans-serif;
   --leading-display: 0.82;
+  --shadow-card: 0 18px 48px rgb(0 0 0 / 0.36), 0 0 80px var(--color-accent-glow);
   --spacing-116: 29rem;
   --text-caption: 0.625rem;
   --text-display-xl: 9rem;
+  --text-micro: 0.56rem;
   --tracking-action: 0.2em;
   --tracking-action-wide: 0.24em;
   --tracking-label: 0.22em;
   --tracking-label-wide: 0.28em;
+  --tracking-secondary-label: 0.12em;
 
   --animate-scroll-cue: scroll-cue 2.2s ease-in-out infinite;
 
@@ -87,6 +91,10 @@
 }
 
 @layer components {
+  .secondary-label {
+    @apply font-body text-micro leading-3 tracking-secondary-label text-muted uppercase;
+  }
+
   .animated-border-card {
     --animated-border-card-color-soft: rgb(from var(--color-accent) r g b / 0.1);
     --animated-border-card-color-strong: rgb(from var(--color-accent) r g b / 0.72);
