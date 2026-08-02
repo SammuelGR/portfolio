@@ -39,73 +39,18 @@ Authoritative versions and scripts live in `package.json`. Read it before assumi
 
 ## Current Repository Layout
 
-```txt
-src/
-  @types/
-    i18next.d.ts
-    resources.d.ts
-  app/
-    Header/
-      __tests__/
-        Header.test.tsx
-        LanguageSwitcher.test.tsx
-      constants.ts
-      DesktopNavigation.tsx
-      Header.tsx
-      LanguageSwitcher.tsx
-      MobileMenuButton.tsx
-      MobileNavigation.tsx
-      types.ts
-    Hero/
-      Projects/
-        Projects.tsx
-      __tests__/
-        Hero.test.tsx
-      assets/
-        hero-background.jpg
-        hero-background.webp
-      Hero.tsx
-    index.tsx
-  assets/
-    projects/
-      manavaultbuilder-thumbnail.webp
-      nf-et-matcher-thumbnail.webp
-  constants/
-    breakpoints.ts
-  data/
-    projects.ts
-  hooks/
-    useMediaQuery.ts
-  locales/
-    en-US/
-      translations.json
-    pt-BR/
-      translations.json
-  styles/
-    globals.css
-  test/
-    setup.ts
-  utils/
-    cn.ts
-  i18n.ts
-  main.tsx
-scripts/
-  generate-i18n-types.mjs
-public/
-  favicon.png
-index.html
-vite.config.ts
-tsconfig.json
-tsconfig.app.json
-tsconfig.node.json
-package.json
-package-lock.json
-README.md
-AGENTS.md
-CLAUDE.md
-```
-
-Do not create broad folder hierarchies speculatively. Add directories only when there are actual files and a clear boundary to preserve.
+- `src/app/`: application shell, page composition, and section-owned UI.
+- `src/assets/`: shared static assets.
+- `src/constants/`: shared runtime constants.
+- `src/data/`: shared static content used by UI components.
+- `src/hooks/`: shared React hooks.
+- `src/locales/`: i18next translation resources.
+- `src/styles/`: global Tailwind import, theme tokens, base styles, and reusable component classes.
+- `src/test/`: test setup and global mocks.
+- `src/types/`: shared TypeScript types.
+- `src/utils/`: shared utility functions.
+- `scripts/`: project maintenance scripts.
+- `public/`: static public assets served by Vite.
 
 ## Build And Validation Commands
 
