@@ -19,7 +19,7 @@ Do not turn undecided areas into permanent project rules without explicit user a
 - Runtime/build: Vite.
 - UI: React.
 - Animation: Motion for React.
-- Icons: Lucide React.
+- Icons: Lucide React for interface icons, React Simple Icons for brand icons.
 - Language: TypeScript.
 - Styling: Tailwind CSS.
 - Testing: Vitest with React Testing Library and jsdom.
@@ -41,6 +41,7 @@ Authoritative versions and scripts live in `package.json`. Read it before assumi
 
 - `src/app/`: application shell, page composition, and section-owned UI.
 - `src/assets/`: shared static assets.
+- `src/components/`: shared reusable UI components.
 - `src/constants/`: shared runtime constants.
 - `src/data/`: shared static content used by UI components.
 - `src/hooks/`: shared React hooks.
@@ -118,6 +119,7 @@ If a command fails because the project lacks configuration, dependencies, or imp
 
 - Use Tailwind CSS for styling.
 - Import every Lucide icon with an `Icon` suffix alias, for example `import { Menu as MenuIcon } from 'lucide-react'`.
+- Import every React Simple Icons brand icon with an `Icon` suffix alias, for example `import { SiGithub as GitHubIcon } from '@icons-pack/react-simple-icons'`.
 - Global CSS lives in `src/styles/globals.css`.
 - Use `src/utils/cn.ts` to compose conditional Tailwind classes.
 - Keep global CSS limited to Tailwind imports, base element defaults, and truly global browser normalization.

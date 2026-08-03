@@ -1,6 +1,8 @@
 import * as m from 'motion/react-m';
 import { useTranslation } from 'react-i18next';
 
+import SectionHeading from '@/components/SectionHeading/SectionHeading';
+import { sectionItemTransition, sectionItemVariants } from '@/components/sectionAnimation';
 import type { TranslationSelector } from '@/types/translation';
 
 import ExperienceCard from './ExperienceCard';
@@ -48,24 +50,6 @@ const weAccelerateTechnologies = [
   'Swagger',
 ];
 
-const experienceItemTransition = {
-  duration: 0.72,
-  ease: [0.16, 1, 0.3, 1] as const,
-};
-
-const experienceItemVariants = {
-  animate: {
-    filter: 'blur(0px)',
-    opacity: 1,
-    y: 0,
-  },
-  initial: {
-    filter: 'blur(6px)',
-    opacity: 0,
-    y: 24,
-  },
-};
-
 export default function Experience() {
   const { t } = useTranslation();
 
@@ -88,33 +72,10 @@ export default function Experience() {
         }}
         whileInView="animate"
       >
-        <m.h2
-          className="font-display text-5xl leading-display font-normal text-title uppercase md:text-8xl"
-          id="experience-title"
-          transition={{ ...experienceItemTransition, duration: 0.84 }}
-          variants={experienceItemVariants}
-        >
-          {t(($) => $.experience.title)}
-        </m.h2>
-
-        <m.div
-          aria-hidden="true"
-          className="mt-3 h-px w-10 origin-left bg-accent md:w-12"
-          transition={experienceItemTransition}
-          variants={{
-            animate: {
-              opacity: 1,
-              scaleX: 1,
-            },
-            initial: {
-              opacity: 0,
-              scaleX: 0,
-            },
-          }}
-        />
+        <SectionHeading id="experience-title" title={t(($) => $.experience.title)} />
 
         <div className="mt-5 grid gap-4 md:mt-6 md:gap-6">
-          <m.div transition={experienceItemTransition} variants={experienceItemVariants}>
+          <m.div transition={sectionItemTransition} variants={sectionItemVariants}>
             <ExperienceCard
               areas={ripioAreas}
               companyName="ripio"
@@ -127,7 +88,7 @@ export default function Experience() {
             />
           </m.div>
 
-          <m.div transition={experienceItemTransition} variants={experienceItemVariants}>
+          <m.div transition={sectionItemTransition} variants={sectionItemVariants}>
             <ExperienceCard
               areas={weAccelerateAreas}
               companyName="we accelerate"

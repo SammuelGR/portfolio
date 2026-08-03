@@ -1,4 +1,5 @@
-import { ArrowRight as ArrowRightIcon, ExternalLink as ExternalLinkIcon } from 'lucide-react';
+import { SiGithub as GitHubIcon } from '@icons-pack/react-simple-icons';
+import { ExternalLink as ExternalLinkIcon } from 'lucide-react';
 import * as m from 'motion/react-m';
 import { useTranslation } from 'react-i18next';
 
@@ -71,7 +72,7 @@ export default function Projects() {
               >
                 <span>{t(($) => $.hero.projects.liveProject)}</span>
 
-                <ArrowRightIcon aria-hidden="true" className="size-4 text-accent md:size-5" strokeWidth={1.4} />
+                <ExternalLinkIcon aria-hidden="true" className="size-4 text-accent md:size-5" strokeWidth={1.4} />
               </a>
 
               <a
@@ -83,7 +84,7 @@ export default function Projects() {
               >
                 <span>{t(($) => $.hero.projects.github)}</span>
 
-                <ExternalLinkIcon aria-hidden="true" className="size-4 text-accent" strokeWidth={1.7} />
+                <GitHubIcon aria-hidden="true" className="size-4 text-accent" />
               </a>
             </div>
           </div>

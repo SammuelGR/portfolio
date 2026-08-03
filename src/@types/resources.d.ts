@@ -65,14 +65,48 @@ export type Resources = {
       scrollIndicator: 'Scroll to continue';
     };
     projects: {
+      action: {
+        github: 'GitHub';
+        hideDetails: 'Hide details';
+        liveProject: 'Live project';
+        viewDetails: 'View details';
+      };
+      cowfunding: {
+        description: 'I built Cowfunding as a crowdfunding experience for rural and agricultural initiatives, with campaign discovery, contribution flows and account actions organized around a simple product surface.';
+        feature: {
+          authentication: 'Authentication and account entry points for contributors';
+          campaigns: 'Campaign discovery focused on rural and agricultural projects';
+          contributions: 'Contribution flows structured for campaign funding';
+        };
+        imageAlt: 'Cowfunding project thumbnail';
+        summary: 'Crowdfunding platform for rural and agricultural projects.';
+        title: 'Cowfunding';
+      };
+      mainFeatures: 'Main features';
       manaVaultBuilder: {
+        description: 'I built ManaVaultBuilder to simplify the creation and management of on-chain vaults, with a focus on asset allocation, real-time portfolio visibility and wallet-based interaction.';
+        feature: {
+          allocationTracking: 'Real-time portfolio allocation and value tracking';
+          customVaults: 'Create and manage custom on-chain vaults with multiple assets';
+          oracleData: 'Integrated market data via Chainlink and Redstone oracles';
+          walletInteraction: 'Connect and interact with Web3 wallets';
+        };
         imageAlt: 'ManaVaultBuilder project thumbnail';
+        summary: 'Web3 vault builder for creating and managing on-chain strategies.';
         title: 'ManaVaultBuilder';
       };
       nfEtMatcher: {
+        description: 'I built NF_ET Matcher as an NFT collection matcher and analytics interface, combining collection search, live matching flows and wallet-aware interactions in a compact dashboard.';
+        feature: {
+          collectionSearch: 'Search and inspect NFT collections from a focused interface';
+          liveMatching: 'Live matching workflow for comparing collection items';
+          walletConnection: 'Wallet connection entry point for Web3 interactions';
+        };
         imageAlt: 'NF_ET Matcher project thumbnail';
+        summary: 'Real-time NFT collection matcher and analytics platform.';
         title: 'NF_ET Matcher';
       };
+      title: 'Projects';
     };
   };
 };

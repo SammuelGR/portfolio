@@ -19,6 +19,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@icons-pack/react-simple-icons": "^13.11.1",
     "@tailwindcss/vite": "^4.3.3",
     "clsx": "^2.1.1",
     "i18next": "^26.3.6",

@@ -5,6 +5,8 @@
   --color-accent-glow: rgb(from var(--color-accent) r g b / 0.08);
   --color-background: #0a0a0b;
   --color-foreground: #e8e6e3;
+  --color-highlight: #dc1f35;
+  --color-highlight-glow: rgb(from var(--color-highlight) r g b / 0.18);
   --color-muted: #8b8276;
   --color-muted-strong: #aea496;
   --color-title: #bdb4a6;
@@ -14,6 +16,7 @@
   --font-ui: 'Space Grotesk', sans-serif;
   --leading-display: 0.82;
   --shadow-card: 0 18px 48px rgb(0 0 0 / 0.36), 0 0 80px var(--color-accent-glow);
+  --shadow-highlight-card: 0 18px 48px rgb(0 0 0 / 0.38), 0 0 96px var(--color-highlight-glow);
   --spacing-116: 29rem;
   --text-caption: 0.625rem;
   --text-display-xl: 9rem;
@@ -152,6 +155,13 @@
 
   .animated-border-card:hover::before {
     opacity: var(--animated-border-card-opacity-hover);
+  }
+
+  .animated-border-card-highlight {
+    --animated-border-card-color-soft: rgb(from var(--color-highlight) r g b / 0.32);
+    --animated-border-card-color-strong: rgb(from var(--color-highlight) r g b / 1);
+    --animated-border-card-opacity: 0.88;
+    --animated-border-card-opacity-hover: 1;
   }
 
   @media (prefers-reduced-motion: no-preference) {
