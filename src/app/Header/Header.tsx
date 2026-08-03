@@ -10,6 +10,8 @@ import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenuButton from './MobileMenuButton';
 import MobileNavigation from './MobileNavigation';
 
+const activeSectionOffset = 96;
+
 export default function Header() {
   const { t } = useTranslation();
   const isMd = useMediaQuery(rules.md);
@@ -27,45 +29,40 @@ export default function Header() {
   );
 
   useEffect(() => {
-    if (!isMd || typeof IntersectionObserver === 'undefined') {
+    if (!isMd) {
       setActiveHref(undefined);
       return;
     }
 
-    const sectionHrefByElement = new Map<Element, string>();
+    const sectionItems = navigationItems
+      .map((item) => ({
+        href: item.href,
+        section: document.querySelector(item.href),
+      }))
+      .filter((item): item is { href: string; section: Element } => item.section !== null);
 
-    navigationItems.forEach((item) => {
-      const section = document.querySelector(item.href);
-
-      if (section) {
-        sectionHrefByElement.set(section, item.href);
-      }
-    });
-
-    if (sectionHrefByElement.size === 0) {
+    if (sectionItems.length === 0) {
       setActiveHref(undefined);
       return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((firstEntry, secondEntry) => secondEntry.intersectionRatio - firstEntry.intersectionRatio)[0];
+    function updateActiveHref(): void {
+      let nextActiveHref: string | undefined;
 
-        setActiveHref(visibleEntry ? sectionHrefByElement.get(visibleEntry.target) : undefined);
-      },
-      {
-        rootMargin: '-20% 0px -45% 0px',
-      },
-    );
+      sectionItems.forEach((item) => {
+        if (item.section.getBoundingClientRect().top <= activeSectionOffset) {
+          nextActiveHref = item.href;
+        }
+      });
 
-    sectionHrefByElement.forEach((_, section) => {
-      observer.observe(section);
-    });
+      setActiveHref((currentActiveHref) => (currentActiveHref === nextActiveHref ? currentActiveHref : nextActiveHref));
+    }
+
+    updateActiveHref();
+    window.addEventListener('scroll', updateActiveHref, { passive: true });
 
     return () => {
-      observer.disconnect();
+      window.removeEventListener('scroll', updateActiveHref);
     };
   }, [isMd, navigationItems]);
 
