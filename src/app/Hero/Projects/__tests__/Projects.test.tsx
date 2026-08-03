@@ -14,6 +14,15 @@ vi.mock('@/data/projects', () => ({
       titleKey: ($: { fakeProject: { imageAlt: string; title: string } }) => $.fakeProject.title,
     },
     {
+      githubUrl: 'fake-project-without-live-url-github-url',
+      imageAltKey: ($: { fakeProjectWithoutLiveUrl: { imageAlt: string; title: string } }) =>
+        $.fakeProjectWithoutLiveUrl.imageAlt,
+      imageSrc: 'fake-project-without-live-url-image-src',
+      isHighlighted: true,
+      titleKey: ($: { fakeProjectWithoutLiveUrl: { imageAlt: string; title: string } }) =>
+        $.fakeProjectWithoutLiveUrl.title,
+    },
+    {
       githubUrl: 'non-highlighted-project-github-url',
       imageAltKey: ($: { nonHighlightedProject: { imageAlt: string; title: string } }) =>
         $.nonHighlightedProject.imageAlt,
@@ -38,6 +47,21 @@ describe('Projects', () => {
     expect(screen.getByRole('link', { name: 'fakeProject.title hero.projects.github' })).toHaveAttribute(
       'href',
       'fake-project-github-url',
+    );
+  });
+
+  it('hides the live project link when the project does not have a live URL', () => {
+    render(<Projects />);
+
+    expect(screen.getByRole('heading', { name: 'fakeProjectWithoutLiveUrl.title' })).toBeInTheDocument();
+    expect(
+      screen.queryByRole('link', {
+        name: 'fakeProjectWithoutLiveUrl.title hero.projects.liveProject',
+      }),
+    ).not.toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'fakeProjectWithoutLiveUrl.title hero.projects.github' })).toHaveAttribute(
+      'href',
+      'fake-project-without-live-url-github-url',
     );
   });
 
