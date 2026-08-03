@@ -11,10 +11,10 @@ type MobileProjectsListProps = {
 };
 
 export default function MobileProjectsList({ projects }: MobileProjectsListProps) {
-  const [expandedProjectUrl, setExpandedProjectUrl] = useState<string>();
+  const [expandedProjectKey, setExpandedProjectKey] = useState<string>();
 
-  function handleToggle(projectUrl: string): void {
-    setExpandedProjectUrl((currentProjectUrl) => (currentProjectUrl === projectUrl ? undefined : projectUrl));
+  function handleToggle(projectKey: string): void {
+    setExpandedProjectKey((currentProjectKey) => (currentProjectKey === projectKey ? undefined : projectKey));
   }
 
   return (
@@ -28,10 +28,10 @@ export default function MobileProjectsList({ projects }: MobileProjectsListProps
       }}
     >
       {projects.map((project) => (
-        <m.div key={project.liveProjectUrl} transition={sectionItemTransition} variants={sectionItemVariants}>
+        <m.div key={project.githubUrl} transition={sectionItemTransition} variants={sectionItemVariants}>
           <MobileProjectCard
-            isExpanded={expandedProjectUrl === project.liveProjectUrl}
-            onToggle={() => handleToggle(project.liveProjectUrl)}
+            isExpanded={expandedProjectKey === project.githubUrl}
+            onToggle={() => handleToggle(project.githubUrl)}
             project={project}
           />
         </m.div>

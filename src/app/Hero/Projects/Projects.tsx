@@ -30,7 +30,7 @@ export default function Projects() {
       {heroProjects.map((project) => (
         <m.article
           className="animated-border-card group overflow-hidden rounded-md border border-foreground/10 bg-background/50 shadow-2xl backdrop-blur-sm transition-colors duration-200 hover:border-accent/30"
-          key={project.liveProjectUrl}
+          key={project.githubUrl}
           transition={{
             duration: 0.68,
             ease: [0.16, 1, 0.3, 1],
@@ -63,17 +63,19 @@ export default function Projects() {
             <h2 className="font-body text-lg leading-none text-foreground md:text-xl">{t(project.titleKey)}</h2>
 
             <div className="mt-3 flex items-center justify-between gap-3 border-t border-foreground/5 pt-3 font-body text-caption tracking-widest text-muted-strong uppercase">
-              <a
-                aria-label={`${t(project.titleKey)} ${t(($) => $.hero.projects.liveProject)}`}
-                className="flex items-center gap-2 text-foreground/80 transition-colors duration-200 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-                href={project.liveProjectUrl}
-                rel="noreferrer"
-                target="_blank"
-              >
-                <span>{t(($) => $.hero.projects.liveProject)}</span>
+              {project.liveProjectUrl ? (
+                <a
+                  aria-label={`${t(project.titleKey)} ${t(($) => $.hero.projects.liveProject)}`}
+                  className="flex items-center gap-2 text-foreground/80 transition-colors duration-200 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                  href={project.liveProjectUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span>{t(($) => $.hero.projects.liveProject)}</span>
 
-                <ExternalLinkIcon aria-hidden="true" className="size-4 text-accent md:size-5" strokeWidth={1.4} />
-              </a>
+                  <ExternalLinkIcon aria-hidden="true" className="size-4 text-accent md:size-5" strokeWidth={1.4} />
+                </a>
+              ) : null}
 
               <a
                 aria-label={`${t(project.titleKey)} ${t(($) => $.hero.projects.github)}`}

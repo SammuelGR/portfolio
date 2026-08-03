@@ -109,16 +109,20 @@ export default function ProjectDialog({ onClose, project }: ProjectDialogProps) 
             'font-body text-caption tracking-action text-muted-strong uppercase',
           ].join(' ')}
         >
-          <a
-            aria-label={`${title} ${t(($) => $.projects.action.liveProject)}`}
-            className="inline-flex items-center gap-3 transition-colors duration-200 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-            href={project.liveProjectUrl}
-            rel="noreferrer"
-            target="_blank"
-          >
-            <span>{t(($) => $.projects.action.liveProject)}</span>
-            <ExternalLinkIcon aria-hidden="true" className="size-5 text-accent" strokeWidth={1.5} />
-          </a>
+          {project.liveProjectUrl ? (
+            <a
+              aria-label={`${title} ${t(($) => $.projects.action.liveProject)}`}
+              className="inline-flex items-center gap-3 transition-colors duration-200 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+              href={project.liveProjectUrl}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <span>{t(($) => $.projects.action.liveProject)}</span>
+              <ExternalLinkIcon aria-hidden="true" className="size-5 text-accent" strokeWidth={1.5} />
+            </a>
+          ) : (
+            <span aria-hidden="true" />
+          )}
 
           <a
             aria-label={`${title} ${t(($) => $.projects.action.github)}`}

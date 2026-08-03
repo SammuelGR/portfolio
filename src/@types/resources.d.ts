@@ -74,41 +74,62 @@ export type Resources = {
         viewDetails: 'View details';
       };
       cowfunding: {
-        description: 'I built Cowfunding as a crowdfunding experience for rural and agricultural initiatives, with campaign discovery, contribution flows and account actions organized around a simple product surface.';
+        description: 'Cowfunding started as the final project for a university course in Software Engineering, based on the idea of simulating a donation platform using cryptocurrencies. I proposed the idea and implemented the application, while the other group members contributed to the interface design, documentation and the remaining project deliverables.';
         feature: {
-          authentication: 'Authentication and account entry points for contributors';
-          campaigns: 'Campaign discovery focused on rural and agricultural projects';
-          contributions: 'Contribution flows structured for campaign funding';
+          backoffice: 'Basic backoffice for managing currencies and users';
+          campaigns: 'Creation and management of campaigns with goals, deadlines and accepted currencies';
+          currencies: 'Setup of currencies available for use in donation campaigns';
         };
         imageAlt: 'Cowfunding project thumbnail';
-        summary: 'Crowdfunding platform for rural and agricultural projects.';
+        summary: 'Platform for managing cryptocurrency donation campaigns.';
         title: 'Cowfunding';
       };
       mainFeatures: 'Main features';
       manaVaultBuilder: {
-        description: 'I built ManaVaultBuilder to simplify the creation and management of on-chain vaults, with a focus on asset allocation, real-time portfolio visibility and wallet-based interaction.';
+        description: 'ManaVaultBuilder is an academic project developed as a pair for creating, organizing and saving Magic: The Gathering decks using data from the Scryfall API. My contribution combined decisions around the project’s organization with direct work on the backend, deployment and parts of the frontend, including routes, loading states and code structure.';
         feature: {
-          allocationTracking: 'Real-time portfolio allocation and value tracking';
-          customVaults: 'Create and manage custom on-chain vaults with multiple assets';
-          oracleData: 'Integrated market data via Chainlink and Redstone oracles';
-          walletInteraction: 'Connect and interact with Web3 wallets';
+          cardSearch: 'Card search and selection using data from the Scryfall API';
+          deckBuilding: 'Creation, editing and organization of Magic: The Gathering decks';
+          persistence: 'Deck persistence through the backend and JSONBin';
         };
         imageAlt: 'ManaVaultBuilder project thumbnail';
-        summary: 'Web3 vault builder for creating and managing on-chain strategies.';
+        summary: 'Magic: The Gathering deck builder powered by Scryfall.';
         title: 'ManaVaultBuilder';
       };
       nfEtMatcher: {
-        description: 'I built NF_ET Matcher as an NFT collection matcher and analytics interface, combining collection search, live matching flows and wallet-aware interactions in a compact dashboard.';
+        description: 'I built NF_ET Matcher as a playful community project for Defiverso, using the Defizeros NFT collection. It pairs NFTs, retrieves their metadata from the blockchain and turns the result into a shareable match.';
         feature: {
-          collectionSearch: 'Search and inspect NFT collections from a focused interface';
-          liveMatching: 'Live matching workflow for comparing collection items';
-          walletConnection: 'Wallet connection entry point for Web3 interactions';
+          matching: 'Random matches and token ID-based pairing between Defizeros NFTs';
+          metadata: 'NFT metadata retrieved from the collection’s blockchain data';
+          sharing: 'Shareable match links and downloadable PNG cards';
         };
         imageAlt: 'NF_ET Matcher project thumbnail';
-        summary: 'Real-time NFT collection matcher and analytics platform.';
+        summary: 'NFT matching experience for the Defizeros collection.';
         title: 'NF_ET Matcher';
       };
+      sigaaReload: {
+        description: "I created SIGAA Reload because I was tired of UNIFEI's academic management system logging me out every 25 minutes. Once installed, the extension runs in the background and automatically keeps the session active while the system is open.";
+        feature: {
+          autoRefresh: 'Automatic session refresh every 20 minutes';
+          backgroundExecution: "Background execution on UNIFEI's SIGAA pages";
+          noMoreHeadaches: 'No more SIGAA headaches';
+        };
+        imageAlt: 'SIGAA Reload project thumbnail';
+        summary: "Browser extension that keeps UNIFEI's SIGAA session active.";
+        title: 'SIGAA Reload';
+      };
       title: 'Projects';
+      votometria: {
+        description: "Votometria was a group project for the Data Analysis course at UNIFEI, created to track the Brazilian presidential election using data from different sources. I proposed the project idea and the use of Polymarket, focusing my work on the market expectations module. I structured this flow end to end, including a data collection and transformation pipeline, PostgreSQL persistence, a FastAPI backend aligned with the project's Python stack, frontend visualizations, and deployment of the frontend, backend and database. The other group members chose to adopt a different approach based on medallion architecture and Google Sheets.";
+        feature: {
+          dataVisualization: 'Recharts visualizations and an aggregated chart combining Polymarket with other data sources';
+          marketBackend: 'FastAPI backend serving historical data for the market expectations module';
+          polymarketPipeline: 'Polymarket data collection and transformation pipeline with PostgreSQL persistence';
+        };
+        imageAlt: 'Votometria project thumbnail';
+        summary: 'Data analysis platform for the Brazilian presidential election.';
+        title: 'Votometria';
+      };
     };
   };
 };

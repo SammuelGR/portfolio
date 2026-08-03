@@ -26,7 +26,7 @@ export default function DesktopProjectsList({ projects }: DesktopProjectsListPro
         }}
       >
         {projects.map((project) => (
-          <m.div key={project.liveProjectUrl} transition={sectionItemTransition} variants={sectionItemVariants}>
+          <m.div key={project.githubUrl} transition={sectionItemTransition} variants={sectionItemVariants}>
             <DesktopProjectCard onOpen={() => setSelectedProject(project)} project={project} />
           </m.div>
         ))}
