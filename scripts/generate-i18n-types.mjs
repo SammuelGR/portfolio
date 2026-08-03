@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { format, resolveConfig } from 'prettier';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const localesDir = path.join(rootDir, 'src', 'locales');
@@ -160,4 +161,11 @@ export type Resources = {
 };
 `;
 
-await writeFile(path.join(rootDir, 'src', '@types', 'resources.d.ts'), output);
+const outputPath = path.join(rootDir, 'src', '@types', 'resources.d.ts');
+const prettierConfig = await resolveConfig(outputPath);
+const formattedOutput = await format(output, {
+  ...prettierConfig,
+  parser: 'typescript',
+});
+
+await writeFile(outputPath, formattedOutput);
