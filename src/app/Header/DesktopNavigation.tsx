@@ -23,6 +23,7 @@ export default function DesktopNavigation({ activeHref, items }: DesktopNavigati
           return (
             <m.li
               animate={{ opacity: 1, y: 0 }}
+              className="flex items-center gap-3"
               initial={{ opacity: 0, y: -6 }}
               key={item.href}
               transition={{
@@ -31,20 +32,25 @@ export default function DesktopNavigation({ activeHref, items }: DesktopNavigati
                 ease: 'easeOut',
               }}
             >
+              <span aria-hidden="true" className="pointer-events-none relative size-1.5 shrink-0">
+                <m.span
+                  animate={isActive ? { opacity: 1, scale: 1, x: 0 } : { opacity: 0, scale: 0.65, x: -2 }}
+                  className="absolute inset-0 rounded-full bg-accent"
+                  initial={false}
+                  transition={{ duration: 0.18, ease: 'easeOut' }}
+                />
+              </span>
+
               <a
                 aria-current={isActive ? 'location' : undefined}
                 className={cn(
                   interactiveTextClassName,
-                  'inline-flex items-center gap-3 font-medium font-ui text-xs uppercase',
+                  'inline-flex font-medium font-ui text-xs uppercase',
                   isActive ? 'text-foreground' : 'text-foreground/70',
                 )}
                 href={item.href}
               >
-                <span
-                  aria-hidden="true"
-                  className={cn('size-1.5 rounded-full bg-accent', isActive ? 'opacity-100' : 'opacity-0')}
-                />
-                <span>{item.label}</span>
+                {item.label}
               </a>
             </m.li>
           );
