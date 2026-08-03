@@ -66,9 +66,11 @@ export type Resources = {
     };
     projects: {
       action: {
+        closeDetails: 'Close project details';
         github: 'GitHub';
         hideDetails: 'Hide details';
         liveProject: 'Live project';
+        openDetails: 'Open project details for';
         viewDetails: 'View details';
       };
       cowfunding: {

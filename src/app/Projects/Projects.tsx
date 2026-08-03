@@ -2,12 +2,16 @@ import * as m from 'motion/react-m';
 import { useTranslation } from 'react-i18next';
 
 import SectionHeading from '@/components/SectionHeading/SectionHeading';
+import { rules } from '@/constants/breakpoints';
 import { getProjectsOrderedByHighlight } from '@/data/projects';
+import useMediaQuery from '@/hooks/useMediaQuery';
 
+import DesktopProjectsList from './Desktop/DesktopProjectsList';
 import MobileProjectsList from './Mobile/MobileProjectsList';
 
 export default function Projects() {
   const { t } = useTranslation();
+  const isMd = useMediaQuery(rules.md);
   const orderedProjects = getProjectsOrderedByHighlight();
 
   return (
@@ -31,7 +35,7 @@ export default function Projects() {
       >
         <SectionHeading id="projects-title" title={t(($) => $.projects.title)} />
 
-        <MobileProjectsList projects={orderedProjects} />
+        {isMd ? <DesktopProjectsList projects={orderedProjects} /> : <MobileProjectsList projects={orderedProjects} />}
       </m.div>
     </section>
   );
