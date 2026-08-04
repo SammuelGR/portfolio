@@ -138,7 +138,7 @@ export default function ProjectDialog({ onClose, project }: ProjectDialogProps) 
       </div>
 
       <button
-        aria-label={t(($) => $.projects.action.closeDetails)}
+        aria-hidden="true"
         className="fixed inset-0 z-0 cursor-default focus-visible:outline-none"
         onClick={onClose}
         tabIndex={-1}

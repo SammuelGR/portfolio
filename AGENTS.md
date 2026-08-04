@@ -81,6 +81,21 @@ npm run build
 
 If a command fails because the project lacks configuration, dependencies, or implementation, report the exact blocker instead of weakening the standard silently.
 
+## Testing Rules
+
+- Write tests only when they protect meaningful behavior, published content, links, or project-specific business rules.
+- Do not add tests only to increase coverage numbers or assert implementation details.
+- Keep tests scoped to the component responsibility:
+  - Orchestrator components may mock child components and assert composition decisions.
+  - Component tests should assert only the content and behavior owned by that component.
+  - Content regression tests may render real component trees and use real data when the goal is to protect published content.
+- Translation text assertions should usually target the i18n key rendered by the test mock, not the final translated copy. The goal is to verify that the correct translation key is wired into the UI.
+- Use explicit fixtures for fake data. Do not mix real production content into fake fixtures unless the test is intentionally validating real content.
+- Prefer clear inline assertions. Create local helpers only when they remove meaningful duplication and make the test easier to read.
+- Helper names must describe exactly what is being asserted. Avoid vague names such as `expectContent` or helpers that hide the main behavior under test.
+- Do not turn secondary implementation details, decorative styling, aria labels, or non-essential copy into unnecessary test contracts.
+- For i18n selector fixtures, use `translationSelectorMock` from `src/test/translation.ts`.
+
 ## TypeScript And React Rules
 
 - Preserve TypeScript strictness implied by the active `tsconfig` files.

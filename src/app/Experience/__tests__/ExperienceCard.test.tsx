@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import type { TranslationSelector } from '@/types/translation';
+import { translationSelectorMock } from '@/test/translation';
 
 import ExperienceCard from '../ExperienceCard';
 
-const areas: TranslationSelector[] = [
-  (($) => ($ as unknown as { fakeArea: { first: string } }).fakeArea.first) as TranslationSelector,
-  (($) => ($ as unknown as { fakeArea: { second: string } }).fakeArea.second) as TranslationSelector,
-  (($) => ($ as unknown as { fakeArea: { third: string } }).fakeArea.third) as TranslationSelector,
+const areas = [
+  translationSelectorMock('fakeArea.first'),
+  translationSelectorMock('fakeArea.second'),
+  translationSelectorMock('fakeArea.third'),
 ];
 
 describe('ExperienceCard', () => {
