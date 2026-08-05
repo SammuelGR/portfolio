@@ -47,7 +47,7 @@ export default function About() {
       id="about"
     >
       <m.div
-        className="mx-auto max-w-7xl lg:max-w-8xl"
+        className="mx-auto max-w-7xl"
         initial="initial"
         transition={{
           delayChildren: 0.08,
