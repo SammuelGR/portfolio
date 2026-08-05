@@ -1,4 +1,7 @@
 {
+  "about.content": "Cabeludo & gearhead & headbanger. Codando desde 2016, quando comecei o curso técnico em Informática do CEFET-MG.\n\nEm 2020 virei fullstack JavaScript e odiava frontend, até descobrir que, na verdade, eu só não tinha estudado o suficiente. Foi então que foquei totalmente no front. Após alguns anos trabalhando na área, hoje curso Sistemas de Informação na UNIFEI, pois gosto de contrariar roteiros.\n\nNos últimos anos descobri uma nova paixão: estudar projetos cripto. Como um grande mestre disse uma vez:\n\n<blockquote>“Bitcoin une tudo que você não sabe sobre computação com tudo que você não sabe sobre economia.”</blockquote>\n\nE isso trouxe de volta o brilho nos meus olhos e a vontade de estudar ainda mais.",
+  "about.imageAlt": "Retrato de Sammuel Reis",
+  "about.title": "Sobre",
   "experience.mainAreas": "Principais áreas",
   "experience.ripio.area.backoffice": "Backoffice e ferramentas administrativas internas",
   "experience.ripio.area.designSystem": "Design systems e componentes reutilizáveis com Storybook",

@@ -126,6 +126,7 @@
     --animated-border-card-opacity-hover: 0.82;
     --animated-border-card-width: 1px;
 
+    isolation: isolate;
     position: relative;
   }
 
@@ -151,6 +152,7 @@
     pointer-events: none;
     position: absolute;
     transition: opacity 200ms ease-out;
+    z-index: 1;
   }
 
   .animated-border-card:hover::before {

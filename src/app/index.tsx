@@ -2,6 +2,7 @@ import Header from './Header/Header';
 import Hero from './Hero/Hero';
 import Experience from './Experience/Experience';
 import Projects from './Projects/Projects';
+import About from './About/About';
 
 export default function App() {
   return (
@@ -14,6 +15,8 @@ export default function App() {
         <Experience />
 
         <Projects />
+
+        <About />
       </main>
     </>
   );

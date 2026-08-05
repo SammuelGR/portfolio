@@ -3,6 +3,11 @@
 
 export type Resources = {
   translation: {
+    about: {
+      content: 'Long hair & gearhead & headbanger. Coding since 2016, when I joined CEFET-MG’s technical high school program in computing.\n\nIn 2020 I became a fullstack JavaScript developer and hated frontend, until I realized that, actually, I just had not studied enough. Eventually, I shifted my focus entirely to frontend. After a few years working in the field, I now study Information Systems at UNIFEI, because I like going against the script.\n\nOver the last few years I discovered a new passion: studying crypto projects. As a great master once said:\n\n<blockquote>“Bitcoin brings together everything you do not know about computing with everything you do not know about economics.”</blockquote>\n\nAnd that brought back the spark in my eyes and the desire to keep studying even more.';
+      imageAlt: 'Portrait of Sammuel Reis';
+      title: 'About';
+    };
     experience: {
       mainAreas: 'Main areas';
       ripio: {
