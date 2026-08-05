@@ -3,6 +3,7 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import SectionHeading from '@/components/SectionHeading/SectionHeading';
 import { sectionItemTransition, sectionItemVariants } from '@/components/sectionAnimation';
+import { cn } from '@/utils/cn';
 
 import aboutPortrait from './assets/about-portrait.webp';
 
@@ -19,7 +20,7 @@ function renderContentBlocks(content: string) {
           <Trans
             components={{
               blockquote: (
-                <blockquote className="border-l border-accent py-0.5 pl-4 italic text-muted-strong md:pl-5" />
+                <blockquote className="border-l border-highlight py-0.5 pl-4 italic text-muted-strong md:pl-5" />
               ),
             }}
             defaults={block}
@@ -39,11 +40,14 @@ export default function About() {
   return (
     <section
       aria-labelledby="about-title"
-      className="bg-background px-5 py-16 md:px-16 md:py-24 lg:px-24 lg:py-28"
+      className={cn(
+        'px-5 py-16 md:px-16 md:py-24 lg:px-24 lg:py-28',
+        'bg-[linear-gradient(to_bottom,var(--color-background)_0,#000_5rem,#000_calc(100%-5rem),var(--color-background)_100%)]',
+      )}
       id="about"
     >
       <m.div
-        className="mx-auto max-w-7xl"
+        className="mx-auto max-w-7xl lg:max-w-8xl"
         initial="initial"
         transition={{
           delayChildren: 0.08,
@@ -55,28 +59,32 @@ export default function About() {
         }}
         whileInView="animate"
       >
-        <SectionHeading id="about-title" title={t(($) => $.about.title)} />
+        <div className="lg:grid lg:grid-cols-2 lg:gap-x-26">
+          <div className="lg:col-start-1 lg:row-start-1">
+            <SectionHeading id="about-title" title={t(($) => $.about.title)} />
+          </div>
 
-        <div className="mt-8 grid gap-y-12 lg:grid-cols-[minmax(0,0.93fr)_minmax(0,1fr)] lg:gap-x-26 md:mt-10 xl:grid-cols-[minmax(0,1fr)_27.5rem]">
-          <m.div
-            className="space-y-6 font-body text-xs leading-6 text-muted-strong md:text-sm md:leading-7"
-            transition={sectionItemTransition}
-            variants={sectionItemVariants}
-          >
-            {renderContentBlocks(content)}
-          </m.div>
+          <div className="mt-8 grid gap-y-12 md:mt-10 lg:contents">
+            <m.div
+              className="space-y-6 font-body text-xs leading-6 text-muted-strong md:text-sm md:leading-7 lg:col-start-1 lg:row-start-2 lg:mt-10"
+              transition={sectionItemTransition}
+              variants={sectionItemVariants}
+            >
+              {renderContentBlocks(content)}
+            </m.div>
 
-          <m.figure
-            className="animated-border-card aspect-3/2 overflow-hidden rounded-lg shadow-card lg:aspect-square lg:max-h-[440px] lg:self-center"
-            transition={sectionItemTransition}
-            variants={sectionItemVariants}
-          >
-            <img
-              alt={t(($) => $.about.imageAlt)}
-              className="size-full object-cover object-[80%_center]"
-              src={aboutPortrait}
-            />
-          </m.figure>
+            <m.figure
+              className="animated-border-card aspect-3/2 overflow-hidden rounded-lg lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:aspect-2/3 xl:aspect-square"
+              transition={sectionItemTransition}
+              variants={sectionItemVariants}
+            >
+              <img
+                alt={t(($) => $.about.imageAlt)}
+                className="size-full object-cover object-right lg:object-[80%_center] xl:object-right"
+                src={aboutPortrait}
+              />
+            </m.figure>
+          </div>
         </div>
       </m.div>
     </section>
