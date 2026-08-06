@@ -8,6 +8,23 @@ export type Resources = {
       imageAlt: 'Portrait of Sammuel Reis';
       title: 'About';
     };
+    contact: {
+      social: {
+        github: {
+          handle: '/sammuelgr';
+          title: 'GitHub';
+        };
+        instagram: {
+          handle: '/sammuelgr';
+          title: 'Instagram';
+        };
+        linkedin: {
+          handle: '/in/sammuel-reis';
+          title: 'LinkedIn';
+        };
+      };
+      title: 'Contact';
+    };
     experience: {
       mainAreas: 'Main areas';
       ripio: {

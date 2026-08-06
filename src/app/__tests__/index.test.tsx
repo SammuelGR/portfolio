@@ -23,6 +23,10 @@ vi.mock('../About/About', () => ({
   default: () => <div data-testid="about" />,
 }));
 
+vi.mock('../Contact/Contact', () => ({
+  default: () => <div data-testid="contact" />,
+}));
+
 describe('App', () => {
   it('renders the app sections', () => {
     render(<App />);
@@ -32,5 +36,6 @@ describe('App', () => {
     expect(screen.getByTestId('experience')).toBeInTheDocument();
     expect(screen.getByTestId('projects')).toBeInTheDocument();
     expect(screen.getByTestId('about')).toBeInTheDocument();
+    expect(screen.getByTestId('contact')).toBeInTheDocument();
   });
 });

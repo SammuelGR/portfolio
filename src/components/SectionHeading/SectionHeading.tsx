@@ -1,17 +1,20 @@
 import * as m from 'motion/react-m';
 
+import { cn } from '@/utils/cn';
+
 import { sectionItemTransition, sectionItemVariants } from '../sectionAnimation';
 
 type SectionHeadingProps = {
+  className?: string;
   id: string;
   title: string;
 };
 
-export default function SectionHeading({ id, title }: SectionHeadingProps) {
+export default function SectionHeading({ className, id, title }: SectionHeadingProps) {
   return (
     <>
       <m.h2
-        className="font-display text-5xl leading-display font-normal text-title uppercase md:text-8xl"
+        className={cn('font-display text-5xl leading-display font-normal text-title uppercase md:text-8xl', className)}
         id={id}
         transition={{ ...sectionItemTransition, duration: 0.84 }}
         variants={sectionItemVariants}
