@@ -57,6 +57,9 @@ export type Resources = {
         role: 'Fullstack JavaScript Developer';
       };
     };
+    footer: {
+      content: 'Sammuel Reis | accept a cookie? 🫴🍪';
+    };
     header: {
       closeMenu: 'Close navigation menu';
       languageSwitcher: {

@@ -4,6 +4,7 @@ import Experience from './Experience/Experience';
 import Projects from './Projects/Projects';
 import About from './About/About';
 import Contact from './Contact/Contact';
+import Footer from './Footer/Footer';
 
 export default function App() {
   return (
@@ -21,6 +22,8 @@ export default function App() {
 
         <Contact />
       </main>
+
+      <Footer />
     </>
   );
 }
